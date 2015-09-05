@@ -1,0 +1,133 @@
+a {
+    text-decoration: none;
+}
+.headings {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+.headings:before,
+.headings:after {
+  content:"";
+  display:table;
+}
+.headings:after {
+  clear:both;
+}
+.title {
+    display: inline-block;
+    float: left;
+    width: 90%;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+.title-bt {
+    display: inline-block;
+    float: left;
+    width: 10%;
+}
+.title-bt a{
+    color: rgb(0, 0, 234);
+}
+form .row {
+    margin-bottom: 10px;
+}
+.row div {
+  display: inline-block;
+}
+.row .col-4 {
+    width: 28%;
+    text-align: left;
+}
+.row .col-8 {
+    width: 70%;
+}
+.row .col-8 input,
+.row .col-8 label {
+    width: 245px;
+}
+#url {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 95%;
+}
+textarea {
+    height: 50px;
+    width: 245px;
+}
+.error input,
+.error textarea {
+    border-color: #c88;
+    border-width: 2px;
+}
+.success input,
+.success textarea {
+    border-color: #5b5;
+    border-width: 2px;
+}
+.error label {
+    color: #c88;
+}
+.success label {
+    color: #5b5;
+}
+
+.footer {
+    border-top: 1px solid gray;
+    margin-top: 30px;
+}
+.footer .nav {
+    background-color: none;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.footer .nav li{
+    display: inline-block;
+    width: 32%;
+}
+.footer .nav a,
+.footer .nav a:hover{
+    width: 100%;
+    /* background-color: #FFFFFF; */
+    background-color: none;
+    color: rgb(0, 0, 238);
+}
+
+.row .btn img {
+    vertical-align: middle;
+}
+
+/* LEVEL ONE */
+.dropdown {
+    /* position: relative; */
+}
+
+/* LEVEL TWO */
+.dropdown ul.sub_menu {
+    list-style: none;
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    margin-top: 5px;
+    padding: 0px;
+    background: white;
+    box-shadow:0 0 4px;
+    height: 100px;
+    overflow-y: scroll;
+}
+.dropdown ul.sub_menu li{
+    padding: 5px;
+    cursor: pointer;
+}
+.dropdown ul.sub_menu li:hover{
+    background-color: #2894FF;
+}
+.msg.error {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    color: red;
+    padding: 0;
+}

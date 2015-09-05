@@ -1,0 +1,12 @@
+# Ignore .DS_Store files created by mac
+.git
+.DS_Store
+/test
+/tmp
+
+# Ignore any zip or xpi files
+*.zip
+*.xpi
+
+*.swp
+*.swo

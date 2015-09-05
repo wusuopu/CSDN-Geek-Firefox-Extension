@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="headings">
+        <div class="title">分享到CSDN极客头条</div>
+        <div class="title-bt">
+          <a id="close-bt" href="#">关闭</a>
+        </div>
+      </div>
+      <form action="http://geek.csdn.net/service/news/add_edit">
+        <div class="row">
+          <div class="col-4"> <label for="url">推荐网址：</label> </div>
+          <div class="col-8">
+            <input class="smooth" type="text" name="url" id="form-url" value="" tabIndex="1" disabled />
+            <!--<p id="url" title=""></p>-->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4"> <label for="title">文章标题：</label> </div>
+          <div class="col-8"> <input class="smooth" type="TEXT" name="title" id="form-title"  tabIndex="2"/> </div>
+        </div>
+        <div class="row">
+          <div class="col-4"> <label for="description">推荐理由：</label> </div>
+          <div class="col-8"> <textarea class="smooth" name="description" id="form-description"></textarea> </div>
+        </div>
+        <div class="row">
+          <div class="col-4"> <label for="title">所属子社区：</label> </div>
+          <div class="col-8">
+            <input class="smooth" type="hidden" name="forum_id" id="form-forum_id"/>
+            <div class="dropdown" >
+              <a href="#" class="btn btn-a btn-sm smooth">
+                选择子社区
+                <img src="img/down-arrow.png" alt=""/>
+              </a>
+              <ul class="sub_menu">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8"> <button id="submit" class="btn btn-b btn-sm smooth" type="SUBMIT">发布</button> </div>
+        </div>
+        <div class="row">
+          <div class="">
+            <div class="msg error">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="footer">
+        <ul class="nav">
+          <li> <a target="_blank" href="http://geek.csdn.net/hot">极客头条最热内容</a> </li>
+          <li> <a target="_blank" href="http://geek.csdn.net/new">极客头条最新内容</a> </li>
+          <li> <a target="_blank" href="http://www.csdn.net">CSDN官网</a> </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
