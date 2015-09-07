@@ -34,18 +34,21 @@ form .row {
     margin-bottom: 10px;
 }
 .row div {
-  display: inline-block;
+  display: block;
 }
 .row .col-4 {
-    width: 28%;
+    /*width: 28%;*/
     text-align: left;
 }
 .row .col-8 {
-    width: 70%;
+    /*width: 70%;*/
+}
+.inline div {
+  display: inline-block;
 }
 .row .col-8 input,
 .row .col-8 label {
-    width: 245px;
+    width: 368px;
 }
 #url {
     overflow: hidden;
@@ -54,18 +57,20 @@ form .row {
     width: 95%;
 }
 textarea {
-    height: 50px;
-    width: 245px;
+    height: 30px;
+    width: 368px;
 }
 .error input,
 .error textarea {
     border-color: #c88;
     border-width: 2px;
+    padding: 7px;
 }
 .success input,
 .success textarea {
     border-color: #5b5;
     border-width: 2px;
+    padding: 7px;
 }
 .error label {
     color: #c88;
@@ -76,7 +81,7 @@ textarea {
 
 .footer {
     border-top: 1px solid gray;
-    margin-top: 30px;
+    margin-top: 13px;
 }
 .footer .nav {
     background-color: none;
