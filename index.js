@@ -76,10 +76,8 @@ function handleClick(state) {
     panel.destroy();
   });
   panel.port.on('submit', function(data) {
-    console.log('panel submit', data);
-    tabs.open('https://passport.csdn.net/');
-    panel.destroy();
-    showResult(38690);
+    //console.log('panel submit', data);
+    postData(data);
   });
   panel.show();
 
@@ -117,9 +115,12 @@ function handleShow() {
 
 // 提交新数据
 function postData(data) {
+  // TODO 获取用户名
   data.username = 'test';
+  // TODO 判断如果没有登录，则打开登录页面
+  //tabs.open('https://passport.csdn.net/');
   Request({
-    url: "http:////geek.csdn.net/service/news/add_edit",
+    url: "http://geek.csdn.net/service/news/add_edit",
     content: data,
     onComplete: function (response) {
       console.log('share:', response.status, response.json);
