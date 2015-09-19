@@ -29,8 +29,16 @@ $('form').on('submit', function(ev) {
   self.port.emit('submit', data);
 });
 
+// 点击链接
+$('.container').on('click', 'a', function(ev){
+  if (ev.target.href !== '#') {
+    self.port.emit('link', { link: ev.target.href });
+    ev.preventDefault();
+  }
+});
+
 function showMessage(msg) {
-  $('.msg.error').text(msg);
+  $('.msg.error').html(msg);
 }
 
 $(function(){
@@ -102,7 +110,7 @@ self.on('message', function(msg){
   switch (type) {
     case 'forum-list':
       if (data.error) {
-        showMessage('获取子社区列表失败！');
+        showMessage(data.error);
       } else {
         var categories = [];
         data.data.forEach(function(v) {
@@ -119,7 +127,7 @@ self.on('message', function(msg){
       $('#form-title').val(data.title);
       break;
     case 'error':
-      showMessage('获取子社区列表失败！');
+      showMessage(data.error);
       break;
   }
 });
