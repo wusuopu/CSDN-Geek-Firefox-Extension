@@ -3,6 +3,7 @@ var self = require("sdk/self");
 var Panel = require("sdk/panel").Panel;
 var Request = require("sdk/request").Request;
 var tabs = require("sdk/tabs");
+var timers = require("sdk/timers");
 
 var activeTab;
 var panel;
@@ -20,12 +21,23 @@ var button = ui.ToggleButton({
 var tips = Panel({
   width: 350,
   height: 90,
-  position: button,
+  position: {
+    right: 10,
+    bottom: 10
+  },
   contentURL: self.data.url("tips.html"),
   contentScript: "self.on('message', function(msg){" +
       'document.getElementById("link").href = "http://geek.csdn.net/news/detail/" + msg.id;' +
-      '});',
+      '});' +
+      'document.getElementById("close").addEventListener("click", function(event) {' +
+        'self.port.emit("panel-close", {});' +
+      '}, false);'
 });
+require("sdk/view/core").getActiveView(tips).setAttribute("noautohide", true);
+tips.port.on('panel-close', function(data) {
+  tips.hide();
+});
+var tips_timer;
 var alert_panel;
 
 function handleClick(state) {
@@ -87,8 +99,16 @@ function handleClick(state) {
 }
 
 function showResult(id) {
+  if (tips_timer) {
+    timers.clearTimeout(tips_timer);
+    tips_timer = null;
+  }
   tips.postMessage({id: id});
   tips.show();
+  // 4秒后自动隐藏
+  tips_timer = timers.setTimeout(function(){
+    tips.hide();
+  }, 4000);
 }
 
 function handleHide() {

@@ -5,16 +5,19 @@ document.getElementById('close-bt').addEventListener('click', function(event) {
 $('form').on('submit', function(ev) {
   var isValid = true;
   var eleList = ['url', 'title', 'forum_id'];
+  var errMsg = ['请输入网址', '请输入文章标题', '请选择子社区'];
   var data = {};
+  var errors = [];
 
   eleList.forEach(function(value, index){
     var ele = $('#form-' + value).parent('div').parent('.row');
-    var v = $('#form-' + value).val();
+    var v = $('#form-' + value).val().trim();
     data[value] = v;
     if (!v) {
       isValid = false;
       ele.removeClass('success');
       ele.addClass('error');
+      errors.push(errMsg[index]);
     } else {
       ele.removeClass('error');
       ele.addClass('success');
@@ -23,6 +26,7 @@ $('form').on('submit', function(ev) {
   ev.preventDefault();
 
   if (!isValid) {
+    showMessage(errors.join('<br />'));
     return;
   }
   data.description = $('#form-description').val();
@@ -43,11 +47,12 @@ function showMessage(msg) {
 
 $(function(){
   var subMenuVisible = false;
-  $('.dropdown > a').on('mouseover', function(ev){
+  var btn = $('.dropdown > div');
+  btn.on('mouseover', function(ev){
     subMenuVisible = true;
-    var topPos = $('.dropdown > a').position().top + $('.dropdown > a').height();
+    var topPos = btn.position().top + btn.height();
     $('.dropdown .sub_menu').css('top', topPos);
-    $('.dropdown .sub_menu').css('min-width', $('.dropdown > a').width());
+    $('.dropdown .sub_menu').css('min-width', btn.width());
     $('.dropdown .sub_menu').css('display', 'block');
   }).on('mouseout',function(ev){
     if (subMenuVisible) {
@@ -70,9 +75,9 @@ $(function(){
     if (subMenuVisible) {
       var x = ev.pageX;
       var y = ev.pageY;
-      var btnRect = $('.dropdown > a').position();
-      btnRect.width = $('.dropdown > a').width();
-      btnRect.height = $('.dropdown > a').height();
+      var btnRect = btn.position();
+      btnRect.width = btn.width();
+      btnRect.height = btn.height();
       var menuRect = $('.dropdown .sub_menu').position();
       menuRect.width = $('.dropdown .sub_menu').width();
       menuRect.height = $('.dropdown .sub_menu').height();
@@ -97,7 +102,7 @@ $(function(){
     }
     var name = $(ev.target).data('name');
     var id = $(ev.target).data('id');
-    $('.dropdown > a').html(name + '<img src="img/down-arrow.png" alt=""/>');
+    btn.html(name + '<img src="img/down-arrow.png" alt=""/>');
     $('#form-forum_id').val(id);
     subMenuVisible = false;
     $('.dropdown .sub_menu').css('display', 'none');

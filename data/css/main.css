@@ -48,7 +48,7 @@ form .row {
 }
 .row .col-8 input,
 .row .col-8 label {
-    width: 368px;
+    width: 350px;
 }
 #url {
     overflow: hidden;
@@ -58,7 +58,7 @@ form .row {
 }
 textarea {
     height: 30px;
-    width: 368px;
+    width: 350px;
 }
 .error input,
 .error textarea {
